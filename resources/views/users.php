@@ -1,0 +1,185 @@
+<?php
+ // connexion a la base de données
+ $servename="localhost";
+ $username="root";
+ $password="";
+ $dbname="clinic";
+
+ try {
+    
+     $conn= new PDO("mysql:host=$servename;dbname=$dbname",$username,$password);
+     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXECEPTION);
+     //echo "la connexion a ete bien etablie";
+ }
+ catch(PDOException $e){
+    echo "la connexion a echoué :" . $e->getMessage();
+ }
+ if(isset($_POST['sign in']))
+ {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    
+    $sql = "INSERT INTO `users` (`username`, `email`) VALUES (:username, :email)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':username',$username);
+    $stmt->bindParam(':email',$email);
+    $stmt->execute();
+ }
+ ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #000;
+            color: white;
+        }
+        .navbar-brand {
+            color: white;
+        }
+        .dropdown-item{
+            color:white;
+        }
+        .nav-link {
+            color: white !important;
+        }
+
+        .form-container {
+            background-color: #0e0f0f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            width: 400px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        button {
+            background-color: #1e73c4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #d7d8c5;
+        }
+    </style>
+</head>
+<body class="p-0 m-0 border-0 bd-example" style="background-color: white;">
+<nav class="navbar navbar-expand-lg bg-black">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Dental Clinic</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="Home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="index1.html">Appointments</a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Doctors Listing
+                    </a>
+                    <ul class="dropdown-menu bg-black">
+                        <li><a class="dropdown-item" href="doctor1.html">Dr.Gabriel</a></li>
+                        <li><a class="dropdown-item" href="doctor2.html">Dr.Thomas</a></li>
+                        <li><a class="dropdown-item" href="doctor3.html">Dr.Emma</a></li>
+                        <li><a class="dropdown-item" href="doctor4.html">Dr.David</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Account
+                    </a>
+                    <ul class="dropdown-menu bg-black">
+                        <li><a class="dropdown-item" href="signup.html">Sign up</a></li>
+                        <li><a class="dropdown-item" href="signin.html" href=>Sign in</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="logout.html">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="form-container bg-light">
+<h2>Sign In</h2>
+        <form>
+            <label for="username"><b>Username:</b></label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email"><b>Email:</b></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password"><b>Password :</b></label>
+            <input type="password" id="password" name="password" required>
+            
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                <label class="form-check-label" for="autoSizingCheck2">
+                  <b> Remember me </b>
+                </label>
+              
+
+                <div class="col-auto mx-auto">
+                    <button type="submit">Sign in</button>
+                </div>
+                
+                
+        </form>
+</div>
+</body>
+</html>
