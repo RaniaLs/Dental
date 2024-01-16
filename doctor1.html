@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 70%;
+            max-width: 800px;
+        }
+
+        .profile-image-container {
+            position: relative;
+            border-radius: 12px 0 0 12px;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .profile-info {
+            padding: 40px;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .profile-info ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .profile-info li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .profile-info p, .profile-info h2 {
+            line-height: 1.5;
+        }
+
+        .profile-info p strong {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #000102;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a class="home-button" href="Home.html">Home</a>
+    <div class="profile-container">
+        <div class="profile-image-container">
+            <img class="profile-image" src="doctor2.jpg" alt="Profile Image">
+        </div>
+        <div class="profile-info">
+            <h2>Dr. Gabriel</h2>
+            <ul>
+                <li><strong>Phone:</strong><br>+1 234 567 990</li>
+                <li><strong>Email:</strong><br>Gabriel@gmail.com</li>
+                <li><strong>Address:</strong><br>123 Street ABC Morocco</li>
+                <li><strong>Specialty:</strong><br>Orthodontics</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
